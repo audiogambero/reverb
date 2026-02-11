@@ -4,6 +4,7 @@
 
 namespace Parameters
 {
+
     const int VERSION_HINT = 1;
 
     const String ID_MODULATION = "mod";

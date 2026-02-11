@@ -1,6 +1,7 @@
 #pragma once
 
-#include "PluginProcessor.h"
+#include "UI/StatusBar.h"
+// #include "PluginProcessor.h"
 #include "UI/Widgets/Knob.h"
 #include "UI/Widgets/Meter.h"
 #include "UI/Widgets/EQGraph.h"
@@ -41,6 +42,8 @@ private:
     std::unique_ptr<Knob> pKnobMix;
     
     std::unique_ptr<EQGraph> pEQGraph;
+
+    std::unique_ptr<StatusBar> pStatusBar;
 
     std::unique_ptr<AudioProcessorValueTreeState::ButtonAttachment> pAttachmentDiffusion;
     std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> pAttachmentPredelay;

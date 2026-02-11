@@ -1,7 +1,5 @@
 #include "Meter.h"
 
-using String = juce::String;
-
 Meter::Meter(MultiChannelMeterProbe& mp) : mVba(this, [&]{ onVblank(); }), rProbe(mp)
 {
     mRange = NormalisableRange<float>(-84.0, 6.0, 0.1f, 2.5f);
@@ -11,8 +9,6 @@ Meter::Meter(MultiChannelMeterProbe& mp) : mVba(this, [&]{ onVblank(); }), rProb
     {
         addChannel(channelNames[c], c);
     }
-
-    
 }
 
 Meter::~Meter()

@@ -24,7 +24,10 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor (AudioPluginAud
 
     pMeter = std::make_unique<Meter>(processorRef.getProbe());
 
-    pEQGraph = std::make_unique<EQGraph>();
+    pEQGraph = std::make_unique<EQGraph>(processorRef);
+
+    pStatusBar = std::make_unique<StatusBar>(processorRef);
+    addAndMakeVisible(pStatusBar.get());
 
     addAndMakeVisible(pButtonDiffusion.get());
 
@@ -55,7 +58,7 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor (AudioPluginAud
     pAttachmentHighG = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(apvts, Parameters::ID_TAIL_HIGH_G, *pKnobHighG.get());
     pAttachmentMix = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(apvts, Parameters::ID_MIX, *pKnobMix.get());
 
-    setSize (1000, 520);
+    setSize (1000, 552);
 }
 
 AudioPluginAudioProcessorEditor::~AudioPluginAudioProcessorEditor()
@@ -65,7 +68,7 @@ AudioPluginAudioProcessorEditor::~AudioPluginAudioProcessorEditor()
 //==============================================================================
 void AudioPluginAudioProcessorEditor::paint (Graphics& g)
 {
-    g.drawImage(mBackground, getLocalBounds().toFloat());
+    g.drawImageAt(mBackground, 0, 0);
 }
 
 void AudioPluginAudioProcessorEditor::resized()
@@ -89,4 +92,6 @@ void AudioPluginAudioProcessorEditor::resized()
     pMeter->setBounds(840, 320, 80, 160);
 
     pEQGraph->setBounds(320, 320, 200, 160);
+
+    pStatusBar->setBounds(0, 520, getWidth(), 32);
 }

@@ -15,7 +15,7 @@ cmake_minimum_required(VERSION 3.22)
 # `project()` command. `project()` sets up some helpful variables that describe source/binary
 # directories, and the current project version. This is a standard CMake command.
 
-project(AUDIO_PLUGIN_EXAMPLE VERSION 0.0.1)
+project(AUDIO_PLUGIN_EXAMPLE VERSION 0.0.3)
 
 # If you've installed JUCE somehow (via a package manager, or directly using the CMake install
 # target), you'll need to tell this project that it depends on the installed copy of JUCE. If you've
@@ -74,11 +74,14 @@ juce_generate_juce_header(AudioPluginExample)
 # CMake command.
 
 target_sources(AudioPluginExample
-    PRIVATE
+    PRIVATE        
+        PluginEditor.cpp
+        PluginProcessor.cpp
         UI/Widgets/Knob.cpp
         UI/Widgets/Meter.cpp
-        UI/Widgets/EQGraph.cpp
         UI/NeverbLookAndFeel.cpp
+        UI/Widgets/EQGraph.cpp
+        UI/StatusBar.cpp
         DSP/Delay.cpp
         DSP/DelayAPF.cpp
         DSP/NestedDelayAPF.cpp
@@ -86,9 +89,7 @@ target_sources(AudioPluginExample
         DSP/OnePoleLPF.cpp
         DSP/ReverbTank.cpp
         DSP/Biquad.cpp
-        DSP/ShelfPair.cpp
-        PluginEditor.cpp
-        PluginProcessor.cpp)
+        DSP/ShelfPair.cpp)
 
 # `target_compile_definitions` adds some preprocessor definitions to our target. In a Projucer
 # project, these might be passed in the 'Preprocessor Definitions' field. JUCE modules also make use
